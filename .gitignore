@@ -1,0 +1,7 @@
+bin/
+obj/
+Plany/
+Test/
+OPP_Income_Expenses.*
+*.xml
+*.txt
