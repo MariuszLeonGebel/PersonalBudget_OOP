@@ -50,6 +50,10 @@ int main() {
             case '7':
                 personalBudget.userLogOut();
                 break;
+            default:
+                cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
+                system("pause");
+                break;
             }
         }
     }

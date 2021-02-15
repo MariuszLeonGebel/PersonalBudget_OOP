@@ -2,7 +2,7 @@
 #define EXPENSE_H
 
 #include <iostream>
-#include <Entry.h>
+#include "Entry.h"
 
 using namespace std;
 

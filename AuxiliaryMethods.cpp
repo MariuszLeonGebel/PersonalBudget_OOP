@@ -21,8 +21,7 @@ char AuxiliaryMethods::getChar() {
     char mark  = {0};
 
     while (true) {
-        cin.clear();
-        cin.sync();
+        cin.clear(); cin.sync();
         getline(cin, text);
 
         if (text.length() == 1) {
@@ -107,8 +106,7 @@ string AuxiliaryMethods::floatToStringConversion(float number) {
 
 string AuxiliaryMethods::getLine() {
     string text = "";
-    cin.clear();
-    cin.sync();
+    cin.clear(); cin.sync();
     getline(cin, text);
 
     return text;
