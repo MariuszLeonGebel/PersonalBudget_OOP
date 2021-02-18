@@ -16,8 +16,8 @@ void PersonalBudget::userLogOut() {
     userManager.userLogOut();
 }
 
-void PersonalBudget::passwordChange() {
-    userManager.passwordChange();
+void PersonalBudget::passwordChange(int getUserId) {
+    userManager.passwordChange(getUserId);
 }
 
 int PersonalBudget::getUserId() {
@@ -25,13 +25,13 @@ int PersonalBudget::getUserId() {
 }
 
 void PersonalBudget::addIncome(int getUserId) {
-    entryManager.addIncome(getUserId);
+    entryManager -> addIncome(getUserId);
 }
 
 void PersonalBudget::addExpense(int getUserId) {
-    entryManager.addExpense(getUserId);
+    entryManager -> addExpense(getUserId);
 }
 
-void PersonalBudget::createMonthBudget(int getUserId, int no) {
-    budgetManager.createMonthBudget(getUserId, no);
+void PersonalBudget::createIncomeExpensesStatement(int getUserId, int no) {
+    budgetManager -> createIncomeExpensesStatement(getUserId, no);
 }

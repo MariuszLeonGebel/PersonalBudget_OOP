@@ -10,20 +10,29 @@ using namespace std;
 
 class PersonalBudget {
     UserManager userManager;
-    EntryManager entryManager;
-    BudgetManager budgetManager;
+    EntryManager * entryManager;
+    BudgetManager * budgetManager;
 
 public:
+    PersonalBudget() {
+        entryManager = NULL;
+        budgetManager = NULL;
+    }
+    ~PersonalBudget() {
+        delete entryManager;
+        delete budgetManager;
+        entryManager = NULL;
+        budgetManager = NULL;
+    }
     bool isUserLoggedIn();
     void userRegistration();
     void userLogIn();
     void userLogOut();
-    void passwordChange();
+    void passwordChange(int id);
     int getUserId();
     void addIncome(int id);
     void addExpense(int id);
-    void createMonthBudget(int id, int no);
-
+    void createIncomeExpensesStatement(int id, int no);
 };
 
 #endif // PERSONALBUDGET_H

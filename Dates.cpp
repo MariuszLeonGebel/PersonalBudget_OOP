@@ -35,7 +35,7 @@ string Dates::enterDate(string description) {
         if(error == false) return enteredDate;
 Error:
         cout<<endl<<"Nieprawidlowa data!"<<endl;
-        cout<<"Program wymagania podania daty w formacie: \"rrrr-mm-dd\","<<endl;
+        cout<<"Program wymaga podania daty w formacie: \"rrrr-mm-dd\","<<endl;
         cout<<"w zakresie od 2000-01-01 do konca biezacego miesiaca!"<<endl;
     } while(error == true);
 }

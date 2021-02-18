@@ -36,16 +36,16 @@ int main() {
                 personalBudget.addExpense(personalBudget.getUserId());
                 break;
             case '3':
-                personalBudget.createMonthBudget(personalBudget.getUserId(), 0);
+                personalBudget.createIncomeExpensesStatement(personalBudget.getUserId(), 0);
                 break;
             case '4':
-                personalBudget.createMonthBudget(personalBudget.getUserId(), 1);
+                personalBudget.createIncomeExpensesStatement(personalBudget.getUserId(), 1);
                 break;
             case '5':
-                personalBudget.createMonthBudget(personalBudget.getUserId(), 2);
+                personalBudget.createIncomeExpensesStatement(personalBudget.getUserId(), 2);
                 break;
             case '6':
-                personalBudget.passwordChange();
+                personalBudget.passwordChange(personalBudget.getUserId());
                 break;
             case '7':
                 personalBudget.userLogOut();

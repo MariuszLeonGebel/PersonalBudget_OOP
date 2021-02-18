@@ -10,17 +10,15 @@
 #include "Dates.h"
 #include "Income.h"
 #include "Expense.h"
+#include "FileOperations.h"
 
 using namespace std;
 
 class BudgetManager {
-    int loggedInUserId;
-
-    void getBudgetData(string periodBegining, string periodEnd);
+    void showBudgetData(string periodBegining, string periodEnd, int loggedInUserId);
 
 public:
-    void createMonthBudget(int userId, int no);
-
+    void createIncomeExpensesStatement(int loggedInUserId, int periodSelection);
 };
 
 #endif // BUDGETMANAGER_H

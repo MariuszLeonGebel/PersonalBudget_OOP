@@ -6,6 +6,7 @@
 #include "Markup.h"
 #include "User.h"
 #include "AuxiliaryMethods.h"
+#include "FileOperations.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ public:
     void userRegistration();
     void userLogIn();
     void userLogOut();
-    void passwordChange();
+    void passwordChange(int loggedInUserId);
     int getUserId();
 };
 

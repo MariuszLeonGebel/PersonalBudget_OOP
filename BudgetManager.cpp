@@ -1,19 +1,18 @@
 #include "BudgetManager.h"
 
-void BudgetManager::createMonthBudget(int userId, int monthSelection) {
+void BudgetManager::createIncomeExpensesStatement(int loggedInUserId, int periodSelection) {
     Dates dates;
     string strMonth="", periodBegin="", periodEnd="";
     int selectedMonth, selectedYear;
 
-    loggedInUserId = userId;
-    if (monthSelection != 2) {
+    if (periodSelection != 2) {
         selectedMonth = dates.getCurrentMonth();
         selectedYear = dates.getCurrentYear();
-        if(selectedMonth==1 && monthSelection==1) {
+        if(selectedMonth==1 && periodSelection==1) {
             selectedMonth = 12;
             selectedYear -= 1;
         } else {
-            selectedMonth -= monthSelection;
+            selectedMonth -= periodSelection;
         }
 
         if (selectedMonth<10) strMonth = "0"+AuxiliaryMethods::intToStrConversion(selectedMonth);
@@ -33,56 +32,18 @@ Again:
             goto Again;
         }
     }
-    getBudgetData(periodBegin, periodEnd);
+    showBudgetData(periodBegin, periodEnd, loggedInUserId);
 }
 
-void BudgetManager::getBudgetData(string periodBegining, string periodEnd) {
+void BudgetManager::showBudgetData(string periodBegining, string periodEnd, int loggedInUserId) {
     CMarkup xml;
     vector <Income> incomes;
     vector <Expense> expenses;
-    Income income;
-    Expense expense;
+    FileOperations file;
     float incomeSum=0, expenseSum=0;
 
-    xml.Load("Incomes.xml");
-    xml.FindElem();
-    xml.IntoElem();
-    while(xml.FindElem("INCOME")) {
-        xml.IntoElem();
-        xml.FindElem("userId");
-        if (xml.GetData()==AuxiliaryMethods::intToStrConversion(loggedInUserId)) {
-            xml.FindElem("date");
-            if(xml.GetData() >= periodBegining && xml.GetData()<= periodEnd) {
-                income.setDate(xml.GetData());
-                xml.FindElem("item");
-                income.setItem(xml.GetData());
-                xml.FindElem("amount");
-                income.setAmount(stof(xml.GetData()));
-                incomes.push_back(income);
-            }
-        }
-        xml.OutOfElem();
-    }
-
-    xml.Load("Expenses.xml");
-    xml.FindElem();
-    xml.IntoElem();
-    while(xml.FindElem("EXPENSE")) {
-        xml.IntoElem();
-        xml.FindElem("userId");
-        if (xml.GetData()==AuxiliaryMethods::intToStrConversion(loggedInUserId)) {
-            xml.FindElem("date");
-            if(xml.GetData() >= periodBegining && xml.GetData()<= periodEnd) {
-                expense.setDate(xml.GetData());
-                xml.FindElem("item");
-                expense.setItem(xml.GetData());
-                xml.FindElem("amount");
-                expense.setAmount(stof(xml.GetData()));
-                expenses.push_back(expense);
-            }
-        }
-        xml.OutOfElem();
-    }
+    incomes = file.getIncomesData(periodBegining, periodEnd, loggedInUserId);
+    expenses = file.getExpensesData(periodBegining, periodEnd, loggedInUserId);
 
     cout<<endl<<"PRZYCHODY"<<endl;
     cout<<"------------------------------------------------------"<<endl;

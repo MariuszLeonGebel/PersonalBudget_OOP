@@ -9,17 +9,13 @@
 #include "Dates.h"
 #include "Income.h"
 #include "Expense.h"
+#include "FileOperations.h"
 
 using namespace std;
 
 class EntryManager {
-    void getIncomeData(int loggedInUserId);
-    int getNewIncomeId();
-    void saveNewIncome(Income newIncome);
-
-    void getExpenseData(int loggedInUserId);
-    int getNewExpenseId();
-    void saveNewExpense(Expense newExpense);
+    void getIncomeDataFromUser(int loggedInUserId);
+    void getExpenseDataFromUser(int loggedInUserId);
 
 public:
     void addIncome(int loggedInUserId);
